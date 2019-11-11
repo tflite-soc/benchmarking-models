@@ -6,7 +6,10 @@ Benchmark and graph results for different targets running different models
 Using the benchmarking tool provided in ????.
 
 ```
-./benchmark_model --use_gpu=false --enable_op_profiling=true --graph=../../tensorflow-models/mobilenet-v1/mobilenet_v1_1.0_224_quant.tflite
+./benchmark_model \
+    --use_gpu=false \
+    --enable_op_profiling=true \
+    --graph=../../tensorflow-models/mobilenet-v1/mobilenet_v1_1.0_224_quant.tflite > <YYYY-MM-DD>-<platform>-<n-of-cores>c.txt
 ```
 
 ## Prefered folder-file structure
