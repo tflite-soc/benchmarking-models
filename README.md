@@ -1,7 +1,7 @@
 # benchmarking-models
 Benchmark and graph results for different targets running different models
 
-## How to collect results
+## How to collect results?
 
 Using the benchmarking tool provided in ????.
 
