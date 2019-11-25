@@ -52,7 +52,6 @@ def getAllData(files):
     threadsAndModel = []
     nodeTypes = []
     nodeTypeAvgs = []
-    threadCounts = []
     
     nodes = []
     runtimes = []
@@ -82,12 +81,6 @@ def getAllData(files):
                 avgTotals[i] = int(avgTotals[i])
                 threads[i] = int(threads[i])
             
-            """after finding matches, create list for thread counts that matches number of nodes 
-            that have that number of threads"""
-            for n in currThreads:
-                for x in range(int(len(summary[0]) / 2)):
-                    threadCounts.append(int(n))
-        
             """separate nodeTypes and avg times into 2 different lists to go into the data frame"""
             
             groupCount=0
@@ -103,18 +96,16 @@ def getAllData(files):
             runCount=0
             
             for run in runLocations:
-                
                 end = next(compTimeLocations).start()
-            
                 runData = re.findall(individualNodes, lines[run.start():end])
                 
                 nodeNum = 0
                 for node in runData:
                     nodeNums.append(nodeNum)
                     nodes.append(node[0])
-            
                     runtimes.append(float(node[1]))
                     individualThreads.append(str(currThreads[runCount]) + '-' + modelName)
+                    
                     nodeNum+=1
                 runCount+=1
                 
@@ -157,6 +148,6 @@ if __name__ == '__main__':
     '''main method for running the script'''
     save = True
     if (len(sys.argv) > 1):
-        save =  (sys.argv[1].lower() != 'false') #boolean representing whether or not to save the graphs
-        
+        #boolean representing whether or not to save the graphs, defaults to true if not specified
+        save = (sys.argv[1].lower() != 'false')
     plotAll(files, save)
