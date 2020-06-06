@@ -1,0 +1,124 @@
+STARTING!
+Duplicate flags: num_threads
+Min num runs: [50]
+Min runs duration (seconds): [1]
+Max runs duration (seconds): [150]
+Inter-run delay (seconds): [-1]
+Num threads: [1]
+Benchmark name: []
+Output prefix: []
+Min warmup runs: [1]
+Min warmup runs duration (seconds): [0.5]
+Graph: [/working_dir/tensorflow-models/iccd2020/mobilenet-v1-float/mobilenet_v1_1.0_224.tflite]
+Input layers: []
+Input shapes: []
+Input value ranges: []
+Input layer values files: []
+Allow fp16 : [0]
+Require full delegation : [0]
+Enable op profiling: [1]
+Max profiling buffer entries: [1024]
+CSV File to export profiling data to: []
+Enable platform-wide tracing: [0]
+#threads used for CPU inference: [1]
+Max number of delegated partitions : [0]
+Min nodes per partition : [0]
+External delegate path : []
+External delegate options : []
+Use gpu : [0]
+Use xnnpack : [0]
+Loaded model /working_dir/tensorflow-models/iccd2020/mobilenet-v1-float/mobilenet_v1_1.0_224.tflite
+The input model file size (MB): 16.9008
+Initialized session in 0.251ms.
+Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+count=8 first=71355 curr=65536 min=65224 max=71355 avg=66960.2 std=2136
+
+Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+count=50 first=66491 curr=65194 min=64922 max=66955 avg=65417.5 std=464
+
+Inference timings in us: Init: 251, First inference: 71355, Warmup (avg): 66960.2, Inference (avg): 65417.5
+Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+Peak memory footprint (MB): init=4.58594 overall=27.6641
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.021	    0.021	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.021	    0.021	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+Number of nodes executed: 1
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	         AllocateTensors	        1	     0.021	   100.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=1 curr=21
+Memory (bytes): count=0
+1 nodes observed
+
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 CONV_2D	            0.000	    1.394	    1.065	  1.628%	  1.628%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_0/Relu6]:0
+	       DEPTHWISE_CONV_2D	            1.065	    7.397	    7.239	 11.066%	 12.694%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6]:1
+	                 CONV_2D	            8.304	    1.934	    1.923	  2.940%	 15.634%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6]:2
+	       DEPTHWISE_CONV_2D	           10.227	    3.436	    3.426	  5.237%	 20.871%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6]:3
+	                 CONV_2D	           13.653	    1.689	    1.657	  2.534%	 23.404%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6]:4
+	       DEPTHWISE_CONV_2D	           15.310	    6.561	    6.559	 10.027%	 33.432%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6]:5
+	                 CONV_2D	           21.870	    3.153	    3.103	  4.744%	 38.176%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6]:6
+	       DEPTHWISE_CONV_2D	           24.973	    1.621	    1.643	  2.512%	 40.687%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6]:7
+	                 CONV_2D	           26.616	    1.577	    1.542	  2.357%	 43.044%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6]:8
+	       DEPTHWISE_CONV_2D	           28.158	    3.170	    3.158	  4.827%	 47.871%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6]:9
+	                 CONV_2D	           31.316	    2.986	    2.987	  4.567%	 52.438%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6]:10
+	       DEPTHWISE_CONV_2D	           34.303	    0.827	    0.792	  1.211%	 53.649%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6]:11
+	                 CONV_2D	           35.096	    1.517	    1.534	  2.345%	 55.995%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6]:12
+	       DEPTHWISE_CONV_2D	           36.630	    1.476	    1.491	  2.280%	 58.274%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6]:13
+	                 CONV_2D	           38.121	    3.066	    3.016	  4.611%	 62.885%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6]:14
+	       DEPTHWISE_CONV_2D	           41.137	    1.476	    1.495	  2.285%	 65.170%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6]:15
+	                 CONV_2D	           42.632	    3.002	    3.005	  4.594%	 69.764%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6]:16
+	       DEPTHWISE_CONV_2D	           45.637	    1.595	    1.494	  2.283%	 72.047%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6]:17
+	                 CONV_2D	           47.131	    3.004	    3.013	  4.606%	 76.653%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6]:18
+	       DEPTHWISE_CONV_2D	           50.144	    1.756	    1.496	  2.287%	 78.941%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6]:19
+	                 CONV_2D	           51.640	    3.012	    3.016	  4.611%	 83.551%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6]:20
+	       DEPTHWISE_CONV_2D	           54.657	    1.505	    1.502	  2.295%	 85.847%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6]:21
+	                 CONV_2D	           56.158	    2.991	    3.027	  4.627%	 90.474%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6]:22
+	       DEPTHWISE_CONV_2D	           59.185	    0.370	    0.373	  0.571%	 91.045%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6]:23
+	                 CONV_2D	           59.559	    1.683	    1.702	  2.602%	 93.647%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6]:24
+	       DEPTHWISE_CONV_2D	           61.261	    0.676	    0.670	  1.024%	 94.671%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6]:25
+	                 CONV_2D	           61.931	    3.410	    3.290	  5.029%	 99.700%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6]:26
+	         AVERAGE_POOL_2D	           65.221	    0.008	    0.008	  0.012%	 99.712%	     0.000	        1	[MobilenetV1/Logits/AvgPool_1a/AvgPool]:27
+	                 CONV_2D	           65.228	    0.192	    0.185	  0.282%	 99.994%	     0.000	        1	[MobilenetV1/Logits/Conv2d_1c_1x1/BiasAdd]:28
+	                 SQUEEZE	           65.413	    0.001	    0.000	  0.001%	 99.995%	     0.000	        1	[MobilenetV1/Logits/SpatialSqueeze]:29
+	                 SOFTMAX	           65.414	    0.004	    0.003	  0.005%	100.000%	     0.000	        1	[MobilenetV1/Predictions/Reshape_1]:30
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	       DEPTHWISE_CONV_2D	            1.065	    7.397	    7.239	 11.066%	 11.066%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6]:1
+	       DEPTHWISE_CONV_2D	           15.310	    6.561	    6.559	 10.027%	 21.093%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6]:5
+	       DEPTHWISE_CONV_2D	           10.227	    3.436	    3.426	  5.237%	 26.330%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6]:3
+	                 CONV_2D	           61.931	    3.410	    3.290	  5.029%	 31.360%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6]:26
+	       DEPTHWISE_CONV_2D	           28.158	    3.170	    3.158	  4.827%	 36.187%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6]:9
+	                 CONV_2D	           21.870	    3.153	    3.103	  4.744%	 40.931%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6]:6
+	                 CONV_2D	           56.158	    2.991	    3.027	  4.627%	 45.558%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6]:22
+	                 CONV_2D	           51.640	    3.012	    3.016	  4.611%	 50.169%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6]:20
+	                 CONV_2D	           38.121	    3.066	    3.016	  4.611%	 54.779%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6]:14
+	                 CONV_2D	           47.131	    3.004	    3.013	  4.606%	 59.385%	     0.000	        1	[MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6]:18
+
+Number of nodes executed: 31
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 CONV_2D	       15	    34.058	    52.076%	    52.076%	     0.000	       15
+	       DEPTHWISE_CONV_2D	       13	    31.333	    47.909%	    99.985%	     0.000	       13
+	         AVERAGE_POOL_2D	        1	     0.007	     0.011%	    99.995%	     0.000	        1
+	                 SOFTMAX	        1	     0.003	     0.005%	   100.000%	     0.000	        1
+	                 SQUEEZE	        1	     0.000	     0.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=50 first=66489 curr=65187 min=64920 max=66951 avg=65415.3 std=464
+Memory (bytes): count=0
+31 nodes observed
+
+
+

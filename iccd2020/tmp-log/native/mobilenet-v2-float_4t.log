@@ -1,0 +1,160 @@
+STARTING!
+Duplicate flags: num_threads
+Min num runs: [50]
+Min runs duration (seconds): [1]
+Max runs duration (seconds): [150]
+Inter-run delay (seconds): [-1]
+Num threads: [4]
+Benchmark name: []
+Output prefix: []
+Min warmup runs: [1]
+Min warmup runs duration (seconds): [0.5]
+Graph: [/working_dir/tensorflow-models/iccd2020/mobilenet-v2-float/mobilenet_v2_1.0_224.tflite]
+Input layers: []
+Input shapes: []
+Input value ranges: []
+Input layer values files: []
+Allow fp16 : [0]
+Require full delegation : [0]
+Enable op profiling: [1]
+Max profiling buffer entries: [1024]
+CSV File to export profiling data to: []
+Enable platform-wide tracing: [0]
+#threads used for CPU inference: [4]
+Max number of delegated partitions : [0]
+Min nodes per partition : [0]
+External delegate path : []
+External delegate options : []
+Use gpu : [0]
+Use xnnpack : [0]
+Loaded model /working_dir/tensorflow-models/iccd2020/mobilenet-v2-float/mobilenet_v2_1.0_224.tflite
+The input model file size (MB): 13.9786
+Initialized session in 0.33ms.
+Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+count=52 first=20253 curr=8948 min=8433 max=20253 avg=9578.96 std=1543
+
+Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+count=109 first=9287 curr=8845 min=7923 max=10217 avg=9076.21 std=418
+
+Inference timings in us: Init: 330, First inference: 20253, Warmup (avg): 9578.96, Inference (avg): 9076.21
+Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+Peak memory footprint (MB): init=5.04297 overall=39.2188
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.062	    0.062	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.062	    0.062	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+Number of nodes executed: 1
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	         AllocateTensors	        1	     0.062	   100.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=1 curr=62
+Memory (bytes): count=0
+1 nodes observed
+
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 CONV_2D	            0.000	    0.653	    0.516	  5.694%	  5.694%	     0.000	        1	[MobilenetV2/Conv/Relu6]:0
+	       DEPTHWISE_CONV_2D	            0.516	    0.670	    0.615	  6.778%	 12.472%	     0.000	        1	[MobilenetV2/expanded_conv/depthwise/Relu6]:1
+	                 CONV_2D	            1.131	    0.246	    0.220	  2.423%	 14.895%	     0.000	        1	[MobilenetV2/expanded_conv/project/BatchNorm/FusedBatchNorm]:2
+	                 CONV_2D	            1.351	    0.523	    0.533	  5.874%	 20.769%	     0.000	        1	[MobilenetV2/expanded_conv_1/expand/Relu6]:3
+	       DEPTHWISE_CONV_2D	            1.884	    0.397	    0.401	  4.425%	 25.194%	     0.000	        1	[MobilenetV2/expanded_conv_1/depthwise/Relu6]:4
+	                 CONV_2D	            2.285	    0.164	    0.183	  2.014%	 27.208%	     0.000	        1	[MobilenetV2/expanded_conv_1/project/BatchNorm/FusedBatchNorm]:5
+	                 CONV_2D	            2.468	    0.269	    0.272	  3.002%	 30.210%	     0.000	        1	[MobilenetV2/expanded_conv_2/expand/Relu6]:6
+	       DEPTHWISE_CONV_2D	            2.741	    0.528	    0.532	  5.861%	 36.071%	     0.000	        1	[MobilenetV2/expanded_conv_2/depthwise/Relu6]:7
+	                 CONV_2D	            3.272	    0.178	    0.191	  2.103%	 38.174%	     0.000	        1	[MobilenetV2/expanded_conv_2/project/BatchNorm/FusedBatchNorm]:8
+	                     ADD	            3.463	    0.025	    0.028	  0.306%	 38.480%	     0.000	        1	[MobilenetV2/expanded_conv_2/add]:9
+	                 CONV_2D	            3.491	    0.244	    0.252	  2.778%	 41.258%	     0.000	        1	[MobilenetV2/expanded_conv_3/expand/Relu6]:10
+	       DEPTHWISE_CONV_2D	            3.743	    0.160	    0.160	  1.769%	 43.027%	     0.000	        1	[MobilenetV2/expanded_conv_3/depthwise/Relu6]:11
+	                 CONV_2D	            3.903	    0.130	    0.103	  1.132%	 44.159%	     0.000	        1	[MobilenetV2/expanded_conv_3/project/BatchNorm/FusedBatchNorm]:12
+	                 CONV_2D	            4.006	    0.145	    0.146	  1.606%	 45.764%	     0.000	        1	[MobilenetV2/expanded_conv_4/expand/Relu6]:13
+	       DEPTHWISE_CONV_2D	            4.152	    0.162	    0.166	  1.833%	 47.597%	     0.000	        1	[MobilenetV2/expanded_conv_4/depthwise/Relu6]:14
+	                 CONV_2D	            4.318	    0.126	    0.113	  1.244%	 48.841%	     0.000	        1	[MobilenetV2/expanded_conv_4/project/BatchNorm/FusedBatchNorm]:15
+	                     ADD	            4.431	    0.008	    0.011	  0.123%	 48.964%	     0.000	        1	[MobilenetV2/expanded_conv_4/add]:16
+	                 CONV_2D	            4.442	    0.141	    0.147	  1.624%	 50.587%	     0.000	        1	[MobilenetV2/expanded_conv_5/expand/Relu6]:17
+	       DEPTHWISE_CONV_2D	            4.589	    0.162	    0.165	  1.815%	 52.402%	     0.000	        1	[MobilenetV2/expanded_conv_5/depthwise/Relu6]:18
+	                 CONV_2D	            4.754	    0.122	    0.107	  1.176%	 53.578%	     0.000	        1	[MobilenetV2/expanded_conv_5/project/BatchNorm/FusedBatchNorm]:19
+	                     ADD	            4.861	    0.021	    0.014	  0.152%	 53.729%	     0.000	        1	[MobilenetV2/expanded_conv_5/add]:20
+	                 CONV_2D	            4.875	    0.146	    0.147	  1.625%	 55.354%	     0.000	        1	[MobilenetV2/expanded_conv_6/expand/Relu6]:21
+	       DEPTHWISE_CONV_2D	            5.022	    0.043	    0.043	  0.473%	 55.827%	     0.000	        1	[MobilenetV2/expanded_conv_6/depthwise/Relu6]:22
+	                 CONV_2D	            5.065	    0.060	    0.061	  0.674%	 56.501%	     0.000	        1	[MobilenetV2/expanded_conv_6/project/BatchNorm/FusedBatchNorm]:23
+	                 CONV_2D	            5.126	    0.135	    0.119	  1.308%	 57.810%	     0.000	        1	[MobilenetV2/expanded_conv_7/expand/Relu6]:24
+	       DEPTHWISE_CONV_2D	            5.245	    0.077	    0.084	  0.926%	 58.736%	     0.000	        1	[MobilenetV2/expanded_conv_7/depthwise/Relu6]:25
+	                 CONV_2D	            5.329	    0.081	    0.106	  1.166%	 59.902%	     0.000	        1	[MobilenetV2/expanded_conv_7/project/BatchNorm/FusedBatchNorm]:26
+	                     ADD	            5.435	    0.004	    0.005	  0.056%	 59.958%	     0.000	        1	[MobilenetV2/expanded_conv_7/add]:27
+	                 CONV_2D	            5.440	    0.087	    0.104	  1.145%	 61.103%	     0.000	        1	[MobilenetV2/expanded_conv_8/expand/Relu6]:28
+	       DEPTHWISE_CONV_2D	            5.544	    0.134	    0.083	  0.915%	 62.018%	     0.000	        1	[MobilenetV2/expanded_conv_8/depthwise/Relu6]:29
+	                 CONV_2D	            5.627	    0.106	    0.103	  1.131%	 63.149%	     0.000	        1	[MobilenetV2/expanded_conv_8/project/BatchNorm/FusedBatchNorm]:30
+	                     ADD	            5.730	    0.004	    0.006	  0.062%	 63.211%	     0.000	        1	[MobilenetV2/expanded_conv_8/add]:31
+	                 CONV_2D	            5.735	    0.120	    0.104	  1.143%	 64.354%	     0.000	        1	[MobilenetV2/expanded_conv_9/expand/Relu6]:32
+	       DEPTHWISE_CONV_2D	            5.839	    0.077	    0.083	  0.914%	 65.268%	     0.000	        1	[MobilenetV2/expanded_conv_9/depthwise/Relu6]:33
+	                 CONV_2D	            5.922	    0.104	    0.096	  1.063%	 66.331%	     0.000	        1	[MobilenetV2/expanded_conv_9/project/BatchNorm/FusedBatchNorm]:34
+	                     ADD	            6.019	    0.006	    0.007	  0.075%	 66.406%	     0.000	        1	[MobilenetV2/expanded_conv_9/add]:35
+	                 CONV_2D	            6.026	    0.099	    0.106	  1.165%	 67.570%	     0.000	        1	[MobilenetV2/expanded_conv_10/expand/Relu6]:36
+	       DEPTHWISE_CONV_2D	            6.131	    0.077	    0.083	  0.919%	 68.489%	     0.000	        1	[MobilenetV2/expanded_conv_10/depthwise/Relu6]:37
+	                 CONV_2D	            6.215	    0.136	    0.123	  1.355%	 69.844%	     0.000	        1	[MobilenetV2/expanded_conv_10/project/BatchNorm/FusedBatchNorm]:38
+	                 CONV_2D	            6.338	    0.141	    0.151	  1.666%	 71.510%	     0.000	        1	[MobilenetV2/expanded_conv_11/expand/Relu6]:39
+	       DEPTHWISE_CONV_2D	            6.489	    0.114	    0.119	  1.313%	 72.822%	     0.000	        1	[MobilenetV2/expanded_conv_11/depthwise/Relu6]:40
+	                 CONV_2D	            6.608	    0.156	    0.154	  1.701%	 74.523%	     0.000	        1	[MobilenetV2/expanded_conv_11/project/BatchNorm/FusedBatchNorm]:41
+	                     ADD	            6.762	    0.006	    0.009	  0.098%	 74.621%	     0.000	        1	[MobilenetV2/expanded_conv_11/add]:42
+	                 CONV_2D	            6.771	    0.154	    0.153	  1.691%	 76.312%	     0.000	        1	[MobilenetV2/expanded_conv_12/expand/Relu6]:43
+	       DEPTHWISE_CONV_2D	            6.925	    0.149	    0.142	  1.567%	 77.879%	     0.000	        1	[MobilenetV2/expanded_conv_12/depthwise/Relu6]:44
+	                 CONV_2D	            7.067	    0.142	    0.156	  1.717%	 79.596%	     0.000	        1	[MobilenetV2/expanded_conv_12/project/BatchNorm/FusedBatchNorm]:45
+	                     ADD	            7.223	    0.010	    0.008	  0.093%	 79.689%	     0.000	        1	[MobilenetV2/expanded_conv_12/add]:46
+	                 CONV_2D	            7.231	    0.152	    0.154	  1.696%	 81.385%	     0.000	        1	[MobilenetV2/expanded_conv_13/expand/Relu6]:47
+	       DEPTHWISE_CONV_2D	            7.385	    0.057	    0.053	  0.580%	 81.965%	     0.000	        1	[MobilenetV2/expanded_conv_13/depthwise/Relu6]:48
+	                 CONV_2D	            7.438	    0.080	    0.094	  1.041%	 83.006%	     0.000	        1	[MobilenetV2/expanded_conv_13/project/BatchNorm/FusedBatchNorm]:49
+	                 CONV_2D	            7.532	    0.139	    0.133	  1.463%	 84.469%	     0.000	        1	[MobilenetV2/expanded_conv_14/expand/Relu6]:50
+	       DEPTHWISE_CONV_2D	            7.665	    0.050	    0.057	  0.630%	 85.099%	     0.000	        1	[MobilenetV2/expanded_conv_14/depthwise/Relu6]:51
+	                 CONV_2D	            7.722	    0.114	    0.120	  1.325%	 86.424%	     0.000	        1	[MobilenetV2/expanded_conv_14/project/BatchNorm/FusedBatchNorm]:52
+	                     ADD	            7.843	    0.004	    0.003	  0.037%	 86.461%	     0.000	        1	[MobilenetV2/expanded_conv_14/add]:53
+	                 CONV_2D	            7.846	    0.129	    0.127	  1.403%	 87.865%	     0.000	        1	[MobilenetV2/expanded_conv_15/expand/Relu6]:54
+	       DEPTHWISE_CONV_2D	            7.973	    0.063	    0.058	  0.634%	 88.499%	     0.000	        1	[MobilenetV2/expanded_conv_15/depthwise/Relu6]:55
+	                 CONV_2D	            8.031	    0.127	    0.120	  1.318%	 89.817%	     0.000	        1	[MobilenetV2/expanded_conv_15/project/BatchNorm/FusedBatchNorm]:56
+	                     ADD	            8.151	    0.002	    0.004	  0.040%	 89.857%	     0.000	        1	[MobilenetV2/expanded_conv_15/add]:57
+	                 CONV_2D	            8.154	    0.108	    0.120	  1.323%	 91.180%	     0.000	        1	[MobilenetV2/expanded_conv_16/expand/Relu6]:58
+	       DEPTHWISE_CONV_2D	            8.275	    0.050	    0.057	  0.631%	 91.811%	     0.000	        1	[MobilenetV2/expanded_conv_16/depthwise/Relu6]:59
+	                 CONV_2D	            8.332	    0.224	    0.205	  2.256%	 94.067%	     0.000	        1	[MobilenetV2/expanded_conv_16/project/BatchNorm/FusedBatchNorm]:60
+	                 CONV_2D	            8.536	    0.250	    0.249	  2.750%	 96.817%	     0.000	        1	[MobilenetV2/Conv_1/Relu6]:61
+	         AVERAGE_POOL_2D	            8.786	    0.008	    0.007	  0.081%	 96.898%	     0.000	        1	[MobilenetV2/Logits/AvgPool]:62
+	                 CONV_2D	            8.793	    0.275	    0.279	  3.071%	 99.970%	     0.000	        1	[MobilenetV2/Logits/Conv2d_1c_1x1/BiasAdd]:63
+	                 RESHAPE	            9.072	    0.000	    0.000	  0.004%	 99.973%	     0.000	        1	[MobilenetV2/Logits/Squeeze]:64
+	                 SOFTMAX	            9.073	    0.002	    0.002	  0.027%	100.000%	     0.000	        1	[MobilenetV2/Predictions/Reshape_1]:65
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	       DEPTHWISE_CONV_2D	            0.516	    0.670	    0.615	  6.778%	  6.778%	     0.000	        1	[MobilenetV2/expanded_conv/depthwise/Relu6]:1
+	                 CONV_2D	            1.351	    0.523	    0.533	  5.874%	 12.652%	     0.000	        1	[MobilenetV2/expanded_conv_1/expand/Relu6]:3
+	       DEPTHWISE_CONV_2D	            2.741	    0.528	    0.532	  5.861%	 18.513%	     0.000	        1	[MobilenetV2/expanded_conv_2/depthwise/Relu6]:7
+	                 CONV_2D	            0.000	    0.653	    0.516	  5.694%	 24.207%	     0.000	        1	[MobilenetV2/Conv/Relu6]:0
+	       DEPTHWISE_CONV_2D	            1.884	    0.397	    0.401	  4.425%	 28.632%	     0.000	        1	[MobilenetV2/expanded_conv_1/depthwise/Relu6]:4
+	                 CONV_2D	            8.793	    0.275	    0.279	  3.071%	 31.703%	     0.000	        1	[MobilenetV2/Logits/Conv2d_1c_1x1/BiasAdd]:63
+	                 CONV_2D	            2.468	    0.269	    0.272	  3.002%	 34.705%	     0.000	        1	[MobilenetV2/expanded_conv_2/expand/Relu6]:6
+	                 CONV_2D	            3.491	    0.244	    0.252	  2.778%	 37.483%	     0.000	        1	[MobilenetV2/expanded_conv_3/expand/Relu6]:10
+	                 CONV_2D	            8.536	    0.250	    0.249	  2.750%	 40.233%	     0.000	        1	[MobilenetV2/Conv_1/Relu6]:61
+	                 CONV_2D	            1.131	    0.246	    0.220	  2.423%	 42.656%	     0.000	        1	[MobilenetV2/expanded_conv/project/BatchNorm/FusedBatchNorm]:2
+
+Number of nodes executed: 66
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 CONV_2D	       36	     6.044	    66.903%	    66.903%	     0.000	       36
+	       DEPTHWISE_CONV_2D	       17	     2.892	    32.012%	    98.915%	     0.000	       17
+	                     ADD	       10	     0.089	     0.985%	    99.900%	     0.000	       10
+	         AVERAGE_POOL_2D	        1	     0.007	     0.077%	    99.978%	     0.000	        1
+	                 SOFTMAX	        1	     0.002	     0.022%	   100.000%	     0.000	        1
+	                 RESHAPE	        1	     0.000	     0.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=109 first=9276 curr=8836 min=7919 max=10209 avg=9069.2 std=418
+Memory (bytes): count=0
+66 nodes observed
+
+
+

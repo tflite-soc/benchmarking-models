@@ -1,0 +1,311 @@
+STARTING!
+Duplicate flags: num_threads
+Min num runs: [50]
+Min runs duration (seconds): [1]
+Max runs duration (seconds): [150]
+Inter-run delay (seconds): [-1]
+Num threads: [4]
+Benchmark name: []
+Output prefix: []
+Min warmup runs: [1]
+Min warmup runs duration (seconds): [0.5]
+Graph: [/working_dir/tensorflow-models/iccd2020/resnet-v2-float/resnet_v2_101_299.tflite]
+Input layers: []
+Input shapes: []
+Input value ranges: []
+Input layer values files: []
+Allow fp16 : [0]
+Require full delegation : [0]
+Enable op profiling: [1]
+Max profiling buffer entries: [1024]
+CSV File to export profiling data to: []
+Enable platform-wide tracing: [0]
+#threads used for CPU inference: [4]
+Max number of delegated partitions : [0]
+Min nodes per partition : [0]
+External delegate path : []
+External delegate options : []
+Use gpu : [0]
+Use xnnpack : [0]
+Loaded model /working_dir/tensorflow-models/iccd2020/resnet-v2-float/resnet_v2_101_299.tflite
+The input model file size (MB): 178.331
+Initialized session in 0.849ms.
+Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+count=2 first=445228 curr=255490 min=255490 max=445228 avg=350359 std=94869
+
+Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+count=50 first=253572 curr=251259 min=250699 max=274685 avg=254705 std=3397
+
+Inference timings in us: Init: 849, First inference: 445228, Warmup (avg): 350359, Inference (avg): 254705
+Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+Peak memory footprint (MB): init=10.7812 overall=366.941
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.279	    0.279	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	         AllocateTensors	            0.000	    0.279	    0.279	100.000%	100.000%	     0.000	        1	AllocateTensors/0
+
+Number of nodes executed: 1
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	         AllocateTensors	        1	     0.279	   100.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=1 curr=279
+Memory (bytes): count=0
+1 nodes observed
+
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                     PAD	            0.000	    0.093	    0.083	  0.033%	  0.033%	     0.000	        1	[resnet_v2_101/Pad]:0
+	                 CONV_2D	            0.083	    6.485	    6.508	  2.556%	  2.588%	     0.000	        1	[resnet_v2_101/conv1/BiasAdd]:1
+	             MAX_POOL_2D	            6.592	    0.991	    0.968	  0.380%	  2.968%	     0.000	        1	[resnet_v2_101/pool1/MaxPool]:2
+	                     MUL	            7.560	    0.119	    0.118	  0.046%	  3.015%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/preact/FusedBatchNorm_mul_0]:3
+	                     ADD	            7.678	    0.120	    0.124	  0.049%	  3.063%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/preact/Relu]:4
+	                 CONV_2D	            7.802	    1.948	    1.940	  0.762%	  3.825%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/shortcut/BiasAdd]:5
+	                 CONV_2D	            9.742	    0.588	    0.602	  0.237%	  4.061%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/conv1/Relu]:6
+	                 CONV_2D	           10.344	    3.537	    3.573	  1.403%	  5.464%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/conv2/Relu]:7
+	                 CONV_2D	           13.917	    1.970	    1.993	  0.783%	  6.247%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/conv3/BiasAdd]:8
+	                     ADD	           15.910	    0.636	    0.701	  0.275%	  6.522%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/add]:9
+	                     MUL	           16.611	    0.569	    0.578	  0.227%	  6.749%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/preact/FusedBatchNorm_mul_0]:10
+	                     ADD	           17.190	    0.536	    0.548	  0.215%	  6.964%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/preact/Relu]:11
+	                 CONV_2D	           17.738	    1.712	    1.725	  0.677%	  7.642%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/conv1/Relu]:12
+	                 CONV_2D	           19.463	    3.506	    3.548	  1.393%	  9.035%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/conv2/Relu]:13
+	                 CONV_2D	           23.012	    1.944	    1.987	  0.780%	  9.815%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/conv3/BiasAdd]:14
+	                     ADD	           24.999	    0.633	    0.699	  0.274%	 10.089%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/add]:15
+	                     MUL	           25.698	    0.514	    0.522	  0.205%	 10.294%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/preact/FusedBatchNorm_mul_0]:16
+	                     ADD	           26.220	    0.528	    0.525	  0.206%	 10.500%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/preact/Relu]:17
+	             MAX_POOL_2D	           26.744	    0.298	    0.303	  0.119%	 10.619%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/shortcut/MaxPool]:18
+	                 CONV_2D	           27.047	    1.750	    1.791	  0.703%	 11.322%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/conv1/Relu]:19
+	                     PAD	           28.839	    0.052	    0.051	  0.020%	 11.343%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/Pad]:20
+	                 CONV_2D	           28.890	    1.004	    1.010	  0.397%	 11.739%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/conv2/Relu]:21
+	                 CONV_2D	           29.900	    0.533	    0.574	  0.225%	 11.965%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/conv3/BiasAdd]:22
+	                     ADD	           30.475	    0.128	    0.150	  0.059%	 12.023%	     0.000	        1	[resnet_v2_101/block1/unit_3/bottleneck_v2/add]:23
+	                     MUL	           30.624	    0.108	    0.110	  0.043%	 12.066%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/preact/FusedBatchNorm_mul_0]:24
+	                     ADD	           30.734	    0.112	    0.115	  0.045%	 12.112%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/preact/Relu]:25
+	                 CONV_2D	           30.849	    3.200	    3.213	  1.262%	 13.373%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/shortcut/BiasAdd]:26
+	                 CONV_2D	           34.062	    0.894	    0.899	  0.353%	 13.726%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/conv1/Relu]:27
+	                 CONV_2D	           34.961	    3.475	    3.489	  1.370%	 15.096%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/conv2/Relu]:28
+	                 CONV_2D	           38.451	    1.748	    1.772	  0.696%	 15.792%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/conv3/BiasAdd]:29
+	                     ADD	           40.223	    0.343	    0.343	  0.135%	 15.927%	     0.000	        1	[resnet_v2_101/block2/unit_1/bottleneck_v2/add]:30
+	                     MUL	           40.566	    0.266	    0.268	  0.105%	 16.032%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/preact/FusedBatchNorm_mul_0]:31
+	                     ADD	           40.835	    0.238	    0.241	  0.095%	 16.127%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/preact/Relu]:32
+	                 CONV_2D	           41.076	    1.654	    1.671	  0.656%	 16.783%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/conv1/Relu]:33
+	                 CONV_2D	           42.747	    3.494	    3.509	  1.378%	 18.161%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/conv2/Relu]:34
+	                 CONV_2D	           46.257	    1.753	    1.772	  0.696%	 18.857%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/conv3/BiasAdd]:35
+	                     ADD	           48.029	    0.354	    0.343	  0.135%	 18.991%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/add]:36
+	                     MUL	           48.372	    0.232	    0.233	  0.091%	 19.083%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/preact/FusedBatchNorm_mul_0]:37
+	                     ADD	           48.605	    0.232	    0.230	  0.090%	 19.173%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/preact/Relu]:38
+	                 CONV_2D	           48.835	    1.690	    1.698	  0.667%	 19.840%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/conv1/Relu]:39
+	                 CONV_2D	           50.532	    3.516	    3.504	  1.376%	 21.215%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/conv2/Relu]:40
+	                 CONV_2D	           54.036	    1.761	    1.769	  0.694%	 21.910%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/conv3/BiasAdd]:41
+	                     ADD	           55.805	    0.389	    0.355	  0.139%	 22.049%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/add]:42
+	                     MUL	           56.159	    0.255	    0.249	  0.098%	 22.147%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/preact/FusedBatchNorm_mul_0]:43
+	                     ADD	           56.409	    0.228	    0.227	  0.089%	 22.236%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/preact/Relu]:44
+	             MAX_POOL_2D	           56.636	    0.119	    0.115	  0.045%	 22.281%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/shortcut/MaxPool]:45
+	                 CONV_2D	           56.751	    1.623	    1.653	  0.649%	 22.930%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/conv1/Relu]:46
+	                     PAD	           58.404	    0.025	    0.026	  0.010%	 22.941%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/Pad]:47
+	                 CONV_2D	           58.430	    0.968	    0.973	  0.382%	 23.323%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/conv2/Relu]:48
+	                 CONV_2D	           59.404	    0.520	    0.525	  0.206%	 23.529%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/conv3/BiasAdd]:49
+	                     ADD	           59.928	    0.075	    0.074	  0.029%	 23.558%	     0.000	        1	[resnet_v2_101/block2/unit_4/bottleneck_v2/add]:50
+	                     MUL	           60.003	    0.063	    0.054	  0.021%	 23.579%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/preact/FusedBatchNorm_mul_0]:51
+	                     ADD	           60.057	    0.056	    0.056	  0.022%	 23.601%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/preact/Relu]:52
+	                 CONV_2D	           60.113	    3.202	    3.276	  1.286%	 24.887%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/shortcut/BiasAdd]:53
+	                 CONV_2D	           63.390	    0.846	    0.862	  0.339%	 25.226%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/conv1/Relu]:54
+	                 CONV_2D	           64.252	    3.476	    3.501	  1.375%	 26.601%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/conv2/Relu]:55
+	                 CONV_2D	           67.753	    1.814	    1.838	  0.722%	 27.323%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/conv3/BiasAdd]:56
+	                     ADD	           69.592	    0.174	    0.171	  0.067%	 27.390%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/add]:57
+	                     MUL	           69.763	    0.127	    0.128	  0.050%	 27.440%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/preact/FusedBatchNorm_mul_0]:58
+	                     ADD	           69.891	    0.114	    0.114	  0.045%	 27.485%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/preact/Relu]:59
+	                 CONV_2D	           70.006	    1.560	    1.609	  0.632%	 28.117%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/conv1/Relu]:60
+	                 CONV_2D	           71.614	    3.458	    3.493	  1.372%	 29.488%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/conv2/Relu]:61
+	                 CONV_2D	           75.108	    1.779	    1.822	  0.716%	 30.204%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/conv3/BiasAdd]:62
+	                     ADD	           76.930	    0.190	    0.189	  0.074%	 30.278%	     0.000	        1	[resnet_v2_101/block3/unit_2/bottleneck_v2/add]:63
+	                     MUL	           77.120	    0.114	    0.114	  0.045%	 30.323%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/preact/FusedBatchNorm_mul_0]:64
+	                     ADD	           77.234	    0.113	    0.113	  0.044%	 30.368%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/preact/Relu]:65
+	                 CONV_2D	           77.347	    1.613	    1.616	  0.635%	 31.002%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/conv1/Relu]:66
+	                 CONV_2D	           78.964	    3.477	    3.482	  1.367%	 32.370%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/conv2/Relu]:67
+	                 CONV_2D	           82.446	    1.807	    1.803	  0.708%	 33.077%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/conv3/BiasAdd]:68
+	                     ADD	           84.249	    0.194	    0.180	  0.071%	 33.148%	     0.000	        1	[resnet_v2_101/block3/unit_3/bottleneck_v2/add]:69
+	                     MUL	           84.430	    0.125	    0.122	  0.048%	 33.196%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/preact/FusedBatchNorm_mul_0]:70
+	                     ADD	           84.552	    0.113	    0.113	  0.044%	 33.241%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/preact/Relu]:71
+	                 CONV_2D	           84.665	    1.612	    1.595	  0.626%	 33.867%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/conv1/Relu]:72
+	                 CONV_2D	           86.260	    3.428	    3.455	  1.357%	 35.223%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/conv2/Relu]:73
+	                 CONV_2D	           89.715	    1.778	    1.808	  0.710%	 35.933%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/conv3/BiasAdd]:74
+	                     ADD	           91.523	    0.183	    0.184	  0.072%	 36.005%	     0.000	        1	[resnet_v2_101/block3/unit_4/bottleneck_v2/add]:75
+	                     MUL	           91.707	    0.121	    0.121	  0.048%	 36.053%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/preact/FusedBatchNorm_mul_0]:76
+	                     ADD	           91.828	    0.114	    0.113	  0.044%	 36.097%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/preact/Relu]:77
+	                 CONV_2D	           91.941	    1.610	    1.604	  0.630%	 36.727%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/conv1/Relu]:78
+	                 CONV_2D	           93.546	    3.422	    3.453	  1.356%	 38.083%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/conv2/Relu]:79
+	                 CONV_2D	           96.999	    1.766	    1.800	  0.707%	 38.790%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/conv3/BiasAdd]:80
+	                     ADD	           98.799	    0.189	    0.182	  0.072%	 38.862%	     0.000	        1	[resnet_v2_101/block3/unit_5/bottleneck_v2/add]:81
+	                     MUL	           98.982	    0.121	    0.124	  0.049%	 38.910%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/preact/FusedBatchNorm_mul_0]:82
+	                     ADD	           99.106	    0.109	    0.109	  0.043%	 38.953%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/preact/Relu]:83
+	                 CONV_2D	           99.215	    1.575	    1.590	  0.624%	 39.577%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/conv1/Relu]:84
+	                 CONV_2D	          100.805	    3.451	    3.446	  1.353%	 40.930%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/conv2/Relu]:85
+	                 CONV_2D	          104.251	    1.829	    1.803	  0.708%	 41.639%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/conv3/BiasAdd]:86
+	                     ADD	          106.054	    0.187	    0.185	  0.073%	 41.711%	     0.000	        1	[resnet_v2_101/block3/unit_6/bottleneck_v2/add]:87
+	                     MUL	          106.239	    0.122	    0.122	  0.048%	 41.759%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/preact/FusedBatchNorm_mul_0]:88
+	                     ADD	          106.362	    0.113	    0.113	  0.044%	 41.803%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/preact/Relu]:89
+	                 CONV_2D	          106.475	    1.571	    1.587	  0.623%	 42.427%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/conv1/Relu]:90
+	                 CONV_2D	          108.062	    3.424	    3.441	  1.351%	 43.778%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/conv2/Relu]:91
+	                 CONV_2D	          111.503	    1.758	    1.806	  0.709%	 44.487%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/conv3/BiasAdd]:92
+	                     ADD	          113.309	    0.185	    0.184	  0.072%	 44.559%	     0.000	        1	[resnet_v2_101/block3/unit_7/bottleneck_v2/add]:93
+	                     MUL	          113.493	    0.122	    0.122	  0.048%	 44.607%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/preact/FusedBatchNorm_mul_0]:94
+	                     ADD	          113.615	    0.112	    0.113	  0.044%	 44.652%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/preact/Relu]:95
+	                 CONV_2D	          113.729	    1.612	    1.588	  0.624%	 45.275%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/conv1/Relu]:96
+	                 CONV_2D	          115.317	    3.410	    3.443	  1.352%	 46.627%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/conv2/Relu]:97
+	                 CONV_2D	          118.760	    1.784	    1.795	  0.705%	 47.332%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/conv3/BiasAdd]:98
+	                     ADD	          120.555	    0.193	    0.187	  0.073%	 47.405%	     0.000	        1	[resnet_v2_101/block3/unit_8/bottleneck_v2/add]:99
+	                     MUL	          120.742	    0.123	    0.124	  0.049%	 47.454%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/preact/FusedBatchNorm_mul_0]:100
+	                     ADD	          120.866	    0.111	    0.113	  0.044%	 47.498%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/preact/Relu]:101
+	                 CONV_2D	          120.980	    1.555	    1.588	  0.623%	 48.122%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/conv1/Relu]:102
+	                 CONV_2D	          122.568	    3.428	    3.440	  1.351%	 49.472%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/conv2/Relu]:103
+	                 CONV_2D	          126.008	    1.796	    1.796	  0.705%	 50.178%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/conv3/BiasAdd]:104
+	                     ADD	          127.804	    0.186	    0.182	  0.071%	 50.249%	     0.000	        1	[resnet_v2_101/block3/unit_9/bottleneck_v2/add]:105
+	                     MUL	          127.986	    0.121	    0.122	  0.048%	 50.297%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/preact/FusedBatchNorm_mul_0]:106
+	                     ADD	          128.108	    0.113	    0.113	  0.044%	 50.341%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/preact/Relu]:107
+	                 CONV_2D	          128.221	    1.627	    1.585	  0.622%	 50.964%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/conv1/Relu]:108
+	                 CONV_2D	          129.806	    3.495	    3.442	  1.352%	 52.315%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/conv2/Relu]:109
+	                 CONV_2D	          133.249	    1.771	    1.799	  0.707%	 53.022%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/conv3/BiasAdd]:110
+	                     ADD	          135.048	    0.181	    0.182	  0.072%	 53.093%	     0.000	        1	[resnet_v2_101/block3/unit_10/bottleneck_v2/add]:111
+	                     MUL	          135.231	    0.122	    0.123	  0.048%	 53.142%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/preact/FusedBatchNorm_mul_0]:112
+	                     ADD	          135.353	    0.113	    0.113	  0.044%	 53.186%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/preact/Relu]:113
+	                 CONV_2D	          135.466	    1.592	    1.592	  0.625%	 53.811%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/conv1/Relu]:114
+	                 CONV_2D	          137.058	    3.488	    3.441	  1.351%	 55.162%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/conv2/Relu]:115
+	                 CONV_2D	          140.500	    1.787	    1.800	  0.707%	 55.869%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/conv3/BiasAdd]:116
+	                     ADD	          142.299	    0.173	    0.184	  0.072%	 55.941%	     0.000	        1	[resnet_v2_101/block3/unit_11/bottleneck_v2/add]:117
+	                     MUL	          142.483	    0.121	    0.122	  0.048%	 55.989%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/preact/FusedBatchNorm_mul_0]:118
+	                     ADD	          142.605	    0.113	    0.113	  0.044%	 56.033%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/preact/Relu]:119
+	                 CONV_2D	          142.718	    1.633	    1.593	  0.626%	 56.659%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/conv1/Relu]:120
+	                 CONV_2D	          144.311	    3.465	    3.440	  1.351%	 58.009%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/conv2/Relu]:121
+	                 CONV_2D	          147.751	    1.786	    1.794	  0.705%	 58.714%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/conv3/BiasAdd]:122
+	                     ADD	          149.546	    0.182	    0.185	  0.073%	 58.787%	     0.000	        1	[resnet_v2_101/block3/unit_12/bottleneck_v2/add]:123
+	                     MUL	          149.731	    0.123	    0.122	  0.048%	 58.835%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/preact/FusedBatchNorm_mul_0]:124
+	                     ADD	          149.853	    0.108	    0.110	  0.043%	 58.878%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/preact/Relu]:125
+	                 CONV_2D	          149.963	    1.592	    1.586	  0.623%	 59.500%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/conv1/Relu]:126
+	                 CONV_2D	          151.549	    3.447	    3.443	  1.352%	 60.852%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/conv2/Relu]:127
+	                 CONV_2D	          154.992	    1.818	    1.802	  0.708%	 61.560%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/conv3/BiasAdd]:128
+	                     ADD	          156.795	    0.184	    0.186	  0.073%	 61.633%	     0.000	        1	[resnet_v2_101/block3/unit_13/bottleneck_v2/add]:129
+	                     MUL	          156.981	    0.122	    0.124	  0.049%	 61.682%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/preact/FusedBatchNorm_mul_0]:130
+	                     ADD	          157.105	    0.113	    0.114	  0.045%	 61.726%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/preact/Relu]:131
+	                 CONV_2D	          157.219	    1.583	    1.584	  0.622%	 62.348%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/conv1/Relu]:132
+	                 CONV_2D	          158.803	    3.489	    3.444	  1.352%	 63.701%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/conv2/Relu]:133
+	                 CONV_2D	          162.247	    2.829	    1.814	  0.712%	 64.413%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/conv3/BiasAdd]:134
+	                     ADD	          164.061	    0.199	    0.182	  0.072%	 64.485%	     0.000	        1	[resnet_v2_101/block3/unit_14/bottleneck_v2/add]:135
+	                     MUL	          164.243	    0.122	    0.122	  0.048%	 64.532%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/preact/FusedBatchNorm_mul_0]:136
+	                     ADD	          164.366	    0.117	    0.109	  0.043%	 64.575%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/preact/Relu]:137
+	                 CONV_2D	          164.475	    1.607	    1.589	  0.624%	 65.199%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/conv1/Relu]:138
+	                 CONV_2D	          166.063	    3.416	    3.435	  1.349%	 66.548%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/conv2/Relu]:139
+	                 CONV_2D	          169.498	    1.745	    1.795	  0.705%	 67.252%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/conv3/BiasAdd]:140
+	                     ADD	          171.293	    0.161	    0.182	  0.071%	 67.324%	     0.000	        1	[resnet_v2_101/block3/unit_15/bottleneck_v2/add]:141
+	                     MUL	          171.475	    0.119	    0.122	  0.048%	 67.372%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/preact/FusedBatchNorm_mul_0]:142
+	                     ADD	          171.597	    0.115	    0.115	  0.045%	 67.417%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/preact/Relu]:143
+	                 CONV_2D	          171.712	    1.560	    1.582	  0.621%	 68.038%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/conv1/Relu]:144
+	                 CONV_2D	          173.293	    3.416	    3.441	  1.351%	 69.389%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/conv2/Relu]:145
+	                 CONV_2D	          176.734	    1.770	    1.794	  0.704%	 70.093%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/conv3/BiasAdd]:146
+	                     ADD	          178.528	    0.155	    0.183	  0.072%	 70.165%	     0.000	        1	[resnet_v2_101/block3/unit_16/bottleneck_v2/add]:147
+	                     MUL	          178.711	    0.120	    0.122	  0.048%	 70.213%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/preact/FusedBatchNorm_mul_0]:148
+	                     ADD	          178.833	    0.107	    0.110	  0.043%	 70.256%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/preact/Relu]:149
+	                 CONV_2D	          178.943	    1.565	    1.582	  0.621%	 70.877%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/conv1/Relu]:150
+	                 CONV_2D	          180.525	    3.404	    3.464	  1.360%	 72.237%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/conv2/Relu]:151
+	                 CONV_2D	          183.989	    1.748	    1.802	  0.707%	 72.945%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/conv3/BiasAdd]:152
+	                     ADD	          185.791	    0.152	    0.183	  0.072%	 73.016%	     0.000	        1	[resnet_v2_101/block3/unit_17/bottleneck_v2/add]:153
+	                     MUL	          185.974	    0.121	    0.124	  0.049%	 73.065%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/preact/FusedBatchNorm_mul_0]:154
+	                     ADD	          186.098	    0.112	    0.113	  0.045%	 73.110%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/preact/Relu]:155
+	                 CONV_2D	          186.212	    1.556	    1.598	  0.628%	 73.737%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/conv1/Relu]:156
+	                 CONV_2D	          187.810	    3.386	    3.460	  1.359%	 75.096%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/conv2/Relu]:157
+	                 CONV_2D	          191.270	    1.793	    1.814	  0.712%	 75.808%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/conv3/BiasAdd]:158
+	                     ADD	          193.084	    0.150	    0.186	  0.073%	 75.881%	     0.000	        1	[resnet_v2_101/block3/unit_18/bottleneck_v2/add]:159
+	                     MUL	          193.270	    0.121	    0.122	  0.048%	 75.929%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/preact/FusedBatchNorm_mul_0]:160
+	                     ADD	          193.393	    0.106	    0.110	  0.043%	 75.972%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/preact/Relu]:161
+	                 CONV_2D	          193.503	    1.544	    1.597	  0.627%	 76.599%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/conv1/Relu]:162
+	                 CONV_2D	          195.100	    3.426	    3.461	  1.359%	 77.958%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/conv2/Relu]:163
+	                 CONV_2D	          198.561	    1.787	    1.813	  0.712%	 78.670%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/conv3/BiasAdd]:164
+	                     ADD	          200.374	    0.198	    0.183	  0.072%	 78.742%	     0.000	        1	[resnet_v2_101/block3/unit_19/bottleneck_v2/add]:165
+	                     MUL	          200.556	    0.129	    0.122	  0.048%	 78.790%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/preact/FusedBatchNorm_mul_0]:166
+	                     ADD	          200.678	    0.113	    0.109	  0.043%	 78.832%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/preact/Relu]:167
+	                 CONV_2D	          200.787	    1.566	    1.596	  0.627%	 79.459%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/conv1/Relu]:168
+	                 CONV_2D	          202.384	    3.411	    3.461	  1.359%	 80.818%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/conv2/Relu]:169
+	                 CONV_2D	          205.845	    1.750	    1.808	  0.710%	 81.528%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/conv3/BiasAdd]:170
+	                     ADD	          207.653	    0.155	    0.183	  0.072%	 81.600%	     0.000	        1	[resnet_v2_101/block3/unit_20/bottleneck_v2/add]:171
+	                     MUL	          207.836	    0.122	    0.122	  0.048%	 81.648%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/preact/FusedBatchNorm_mul_0]:172
+	                     ADD	          207.958	    0.124	    0.113	  0.044%	 81.692%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/preact/Relu]:173
+	                 CONV_2D	          208.071	    1.587	    1.600	  0.628%	 82.320%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/conv1/Relu]:174
+	                 CONV_2D	          209.671	    3.473	    3.464	  1.360%	 83.680%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/conv2/Relu]:175
+	                 CONV_2D	          213.135	    1.805	    1.793	  0.704%	 84.385%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/conv3/BiasAdd]:176
+	                     ADD	          214.928	    0.182	    0.185	  0.072%	 84.457%	     0.000	        1	[resnet_v2_101/block3/unit_21/bottleneck_v2/add]:177
+	                     MUL	          215.113	    0.121	    0.122	  0.048%	 84.505%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/preact/FusedBatchNorm_mul_0]:178
+	                     ADD	          215.235	    0.112	    0.113	  0.044%	 84.549%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/preact/Relu]:179
+	                 CONV_2D	          215.348	    1.552	    1.585	  0.622%	 85.172%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/conv1/Relu]:180
+	                 CONV_2D	          216.934	    3.421	    3.436	  1.349%	 86.521%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/conv2/Relu]:181
+	                 CONV_2D	          220.370	    1.776	    1.794	  0.704%	 87.225%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/conv3/BiasAdd]:182
+	                     ADD	          222.164	    0.185	    0.184	  0.072%	 87.298%	     0.000	        1	[resnet_v2_101/block3/unit_22/bottleneck_v2/add]:183
+	                     MUL	          222.348	    0.121	    0.122	  0.048%	 87.345%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/preact/FusedBatchNorm_mul_0]:184
+	                     ADD	          222.470	    0.112	    0.113	  0.044%	 87.390%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/preact/Relu]:185
+	             MAX_POOL_2D	          222.583	    0.053	    0.053	  0.021%	 87.411%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/shortcut/MaxPool]:186
+	                 CONV_2D	          222.636	    1.545	    1.587	  0.623%	 88.034%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/conv1/Relu]:187
+	                     PAD	          224.224	    0.016	    0.015	  0.006%	 88.039%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/Pad]:188
+	                 CONV_2D	          224.238	    1.039	    1.109	  0.436%	 88.475%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/conv2/Relu]:189
+	                 CONV_2D	          225.347	    0.574	    0.629	  0.247%	 88.722%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/conv3/BiasAdd]:190
+	                     ADD	          225.976	    0.036	    0.043	  0.017%	 88.739%	     0.000	        1	[resnet_v2_101/block3/unit_23/bottleneck_v2/add]:191
+	                     MUL	          226.019	    0.030	    0.030	  0.012%	 88.751%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/preact/FusedBatchNorm_mul_0]:192
+	                     ADD	          226.050	    0.031	    0.031	  0.012%	 88.763%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/preact/Relu]:193
+	                 CONV_2D	          226.081	    3.878	    4.000	  1.571%	 90.333%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/shortcut/BiasAdd]:194
+	                 CONV_2D	          230.081	    0.998	    0.990	  0.389%	 90.722%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/conv1/Relu]:195
+	                 CONV_2D	          231.071	    4.022	    4.068	  1.597%	 92.319%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/conv2/Relu]:196
+	                 CONV_2D	          235.140	    2.082	    2.086	  0.819%	 93.138%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/conv3/BiasAdd]:197
+	                     ADD	          237.226	    0.094	    0.115	  0.045%	 93.184%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/add]:198
+	                     MUL	          237.341	    0.072	    0.076	  0.030%	 93.213%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/preact/FusedBatchNorm_mul_0]:199
+	                     ADD	          237.417	    0.063	    0.063	  0.025%	 93.238%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/preact/Relu]:200
+	                 CONV_2D	          237.481	    1.793	    1.852	  0.727%	 93.965%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/conv1/Relu]:201
+	                 CONV_2D	          239.332	    4.069	    4.050	  1.590%	 95.556%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/conv2/Relu]:202
+	                 CONV_2D	          243.382	    2.032	    2.083	  0.818%	 96.373%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/conv3/BiasAdd]:203
+	                     ADD	          245.465	    0.093	    0.116	  0.045%	 96.419%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/add]:204
+	                     MUL	          245.581	    0.069	    0.070	  0.028%	 96.446%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/preact/FusedBatchNorm_mul_0]:205
+	                     ADD	          245.652	    0.064	    0.065	  0.025%	 96.472%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/preact/Relu]:206
+	                 CONV_2D	          245.716	    1.825	    1.860	  0.731%	 97.202%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/conv1/Relu]:207
+	                 CONV_2D	          247.577	    4.088	    4.085	  1.604%	 98.806%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/conv2/Relu]:208
+	                 CONV_2D	          251.662	    2.032	    2.085	  0.819%	 99.625%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/conv3/BiasAdd]:209
+	                     ADD	          253.747	    0.093	    0.115	  0.045%	 99.670%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/add]:210
+	                     MUL	          253.863	    0.070	    0.072	  0.028%	 99.698%	     0.000	        1	[resnet_v2_101/postnorm/FusedBatchNorm_mul_0]:211
+	                     ADD	          253.935	    0.063	    0.064	  0.025%	 99.724%	     0.000	        1	[resnet_v2_101/postnorm/Relu]:212
+	                    MEAN	          253.999	    0.258	    0.256	  0.101%	 99.824%	     0.000	        1	[resnet_v2_101/pool5]:213
+	                 CONV_2D	          254.256	    0.467	    0.447	  0.176%	100.000%	     0.000	        1	[resnet_v2_101/logits/BiasAdd]:214
+	                 RESHAPE	          254.703	    0.001	    0.001	  0.000%	100.000%	     0.000	        1	[output]:215
+
+============================== Top by Computation Time ==============================
+	             [node type]	          [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 CONV_2D	            0.083	    6.485	    6.508	  2.556%	  2.556%	     0.000	        1	[resnet_v2_101/conv1/BiasAdd]:1
+	                 CONV_2D	          247.577	    4.088	    4.085	  1.604%	  4.159%	     0.000	        1	[resnet_v2_101/block4/unit_3/bottleneck_v2/conv2/Relu]:208
+	                 CONV_2D	          231.071	    4.022	    4.068	  1.597%	  5.757%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/conv2/Relu]:196
+	                 CONV_2D	          239.332	    4.069	    4.050	  1.590%	  7.347%	     0.000	        1	[resnet_v2_101/block4/unit_2/bottleneck_v2/conv2/Relu]:202
+	                 CONV_2D	          226.081	    3.878	    4.000	  1.571%	  8.917%	     0.000	        1	[resnet_v2_101/block4/unit_1/bottleneck_v2/shortcut/BiasAdd]:194
+	                 CONV_2D	           10.344	    3.537	    3.573	  1.403%	 10.320%	     0.000	        1	[resnet_v2_101/block1/unit_1/bottleneck_v2/conv2/Relu]:7
+	                 CONV_2D	           19.463	    3.506	    3.548	  1.393%	 11.714%	     0.000	        1	[resnet_v2_101/block1/unit_2/bottleneck_v2/conv2/Relu]:13
+	                 CONV_2D	           42.747	    3.494	    3.509	  1.378%	 13.092%	     0.000	        1	[resnet_v2_101/block2/unit_2/bottleneck_v2/conv2/Relu]:34
+	                 CONV_2D	           50.532	    3.516	    3.504	  1.376%	 14.467%	     0.000	        1	[resnet_v2_101/block2/unit_3/bottleneck_v2/conv2/Relu]:40
+	                 CONV_2D	           64.252	    3.476	    3.501	  1.375%	 15.842%	     0.000	        1	[resnet_v2_101/block3/unit_1/bottleneck_v2/conv2/Relu]:55
+
+Number of nodes executed: 216
+============================== Summary by node type ==============================
+	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 CONV_2D	      105	   235.841	    92.645%	    92.645%	     0.000	      105
+	                     ADD	       67	    11.804	     4.637%	    97.282%	     0.000	       67
+	                     MUL	       34	     5.053	     1.985%	    99.267%	     0.000	       34
+	             MAX_POOL_2D	        4	     1.437	     0.564%	    99.831%	     0.000	        4
+	                    MEAN	        1	     0.256	     0.101%	    99.932%	     0.000	        1
+	                     PAD	        4	     0.173	     0.068%	   100.000%	     0.000	        4
+	                 RESHAPE	        1	     0.000	     0.000%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=50 first=253537 curr=251228 min=250668 max=274650 avg=254674 std=3397
+Memory (bytes): count=0
+216 nodes observed
+
+
+
