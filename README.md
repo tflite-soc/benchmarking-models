@@ -21,3 +21,9 @@ Using the benchmarking tool provided in ????.
 ├── mobilenet_v1_1.0_224_quant
 │   └── 2019-11-11-zedboard-2c.txt
 ```
+# LICENSE Note
+
+This repository is licensed under the [Apache License 2.0](LICENSE)
+
+However, scripts in this repository may download external files that comply with
+other licenses.
